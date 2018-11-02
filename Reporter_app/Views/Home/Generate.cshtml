@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Generar PDF";
+}
+<h2>@ViewBag.Title.</h2>
+
+<h1>Datos</h1>
+<form>
+        <label for="name" >Nombre</label>
+        <input type="text" name="name" class="form-control"/>
+
+        <label for="lastName">Apellido</label>
+        <input type="text" name="lastName"class="form-control" />
+
+        <label for="accountNumber">Account Nummber</label>
+        <input type="number" name="accountNumber" class="form-control"/>
+
+        <label>Tipo de Cuenta</label><br />
+        <input type="radio" name="accountType" value="Debito"/><label for="Debito">Debito</label>
+        <input type="radio" name="accountType" value="Credito"/><label for="Credito">Credito</label>
+        
+        <br />
+        <input type="submit" value="Generar PDF" class="btn btn-primary"/>
+    
+    
+
+    
+</form>

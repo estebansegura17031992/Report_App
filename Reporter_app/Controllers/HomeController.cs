@@ -13,14 +13,14 @@ namespace Reporter_app.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Generate()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Admin()
         {
             ViewBag.Message = "Your contact page.";
 
