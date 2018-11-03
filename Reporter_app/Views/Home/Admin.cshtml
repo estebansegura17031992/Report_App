@@ -83,7 +83,7 @@
             var edata = editor.getData();
 
             //3.2 REPLACE TEXT
-            replaced_text = edata.replace("--apellido--", data[0].lastName); // you could also use a regex in the replace 
+            replaced_text = edata.replace("--apellido--", data[0].lastName); 
 
             //4.2 SET NEW TEXT
             editor.setData(replaced_text);
@@ -92,7 +92,7 @@
             var edata = editor.getData();
 
             //3.3 REPLACE TEXT
-            replaced_text = edata.replace("--identificacion--", data[0].id); // you could also use a regex in the replace 
+            replaced_text = edata.replace("--identificacion--", data[0].id); 
 
             //4.3 SET NEW TEXT
             editor.setData(replaced_text);
@@ -101,7 +101,7 @@
             var edata = editor.getData();
 
             //3.4 REPLACE TEXT
-            replaced_text = edata.replace("--tipoTarjeta--", data[0].accountType); // you could also use a regex in the replace 
+            replaced_text = edata.replace("--tipoTarjeta--", data[0].accountType); 
 
             //4.4 SET NEW TEXT
             editor.setData(replaced_text);
@@ -119,34 +119,16 @@
             var edata = editor.getData();
 
             //3.1 REPLACE TEXT
-            var replaced_text = edata.replace(previousData.name,actualData.name);
-
-            //4.1 SET NEW TEXT
-            editor.setData(replaced_text);
-
-            //2.2 GET THE TEXT DATA
-            var edata = editor.getData();
-
+            var replaced_text = edata.replace(previousData.name, actualData.name);
+            
             //3.2 REPLACE TEXT
-            replaced_text = edata.replace(previousData.lastName, actualData.lastName);  
-
-            //4.2 SET NEW TEXT
-            editor.setData(replaced_text);
-
-            //2.3 GET THE TEXT DATA
-            var edata = editor.getData();
-
+            replaced_text = replaced_text.replace(previousData.lastName, actualData.lastName);
+            
             //3.3 REPLACE TEXT
-            replaced_text = edata.replace(previousData.id, actualData.id); 
-
-            //4.3 SET NEW TEXT
-            editor.setData(replaced_text);
-
-            //2.4 GET THE TEXT DATA
-            var edata = editor.getData();
-
+            replaced_text = replaced_text.replace(previousData.id, actualData.id); 
+            
             //3.4 REPLACE TEXT
-            replaced_text = edata.replace(previousData.accountType, actualData.accountType); 
+            replaced_text = replaced_text.replace(previousData.accountType, actualData.accountType); 
 
             //4.4 SET NEW TEXT
             editor.setData(replaced_text);
