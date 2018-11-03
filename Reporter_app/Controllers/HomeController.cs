@@ -22,7 +22,7 @@ namespace Reporter_app.Controllers
 
         public ActionResult Admin()
         {
-            ViewBag.Message = "Your contact page.";
+            
 
             return View();
         }
