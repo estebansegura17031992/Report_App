@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Admin Page";
+}
+<h2>@ViewBag.Title.</h2>
+
+<select name="test" id="mySelect" class="form-control"></select>
+<br>
+<textarea name="editor1" rows="4" cols="50">Calificacion del cliente<br />
+<b>NOMBRE DEL CLIENTE</b> --name--<br />
+<b>APELLIDO</b> --apellido--<br />
+<b>IDENTIFICACION</b> --identificacion--<br />
+<b>CREDITO O DEBITO</b> --tipoTarjeta--
+</textarea>
+<br />
+
+<button onclick="generatePDF()" class="btn btn-primary">Generar PDF</button>
+
+
+<script>
+    //------------------- DUMMY DATA -----------------------------------
+    var data = [{
+        "id": 1,
+        "name": "Esteban",
+        "lastName": "Segura",
+        "accountNumber": 1234,
+        "accountType": "Debito"
+        }, {
+        "id": 2,
+        "name": "Nelda",
+        "lastName": "Cisnero",
+        "accountNumber": 5678,
+        "accountType": "Credito"
+        }, { 
+        "id":3,
+        "name": "Maria Jose",
+        "lastName": "Aragon",
+        "accountNumber": 9012,
+        "accountType": "Debito" 
+        }];
+    //---------------------------------------------------------------------
+
+    $.each(data, function (i, item) {
+        $('#mySelect').append($('<option>', {
+            value: item.id,
+            text: item.name
+        }));
+    });
+
+    var previous;
+
+  $("#mySelect").focus(function () {
+    // Store the current value on focus, before it changes
+    previous = this.value;
+}).change(function () {
+    // Do something with the previous value after the change
+    changeText(false);
+    previous = this.value;
+});
+    
+
+    CKEDITOR.replace('editor1', {
+        //removeButtons: 'Cut,Copy,Paste,PasteFromWord,PasteText,HorizontalRule,SpecialChar,Blockquote,Indent,Outdent,Scayt,About,Format,IncreaseIndent,RemoveFormat,Undo,Redo,Anchor,Link,Unlink,Maximize,Source,Italic,Strike,Subscript,Superscript',
+        resize_enabled: true
+    });
+
+    changeText(true);
+
+    function changeText(isFirst) {
+        if (isFirst) {
+            //1. SELECT THE INSTANCE OF THE CKEditor
+            editor = CKEDITOR.instances.editor1;
+
+            //2.1 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.1 REPLACE TEXT
+            var replaced_text = edata.replace("--name--", data[0].name);
+
+            //4.1 SET NEW TEXT
+            editor.setData(replaced_text);
+
+            //2.2 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.2 REPLACE TEXT
+            replaced_text = edata.replace("--apellido--", data[0].lastName); // you could also use a regex in the replace 
+
+            //4.2 SET NEW TEXT
+            editor.setData(replaced_text);
+
+            //2.3 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.3 REPLACE TEXT
+            replaced_text = edata.replace("--identificacion--", data[0].id); // you could also use a regex in the replace 
+
+            //4.3 SET NEW TEXT
+            editor.setData(replaced_text);
+
+            //2.4 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.4 REPLACE TEXT
+            replaced_text = edata.replace("--tipoTarjeta--", data[0].accountType); // you could also use a regex in the replace 
+
+            //4.4 SET NEW TEXT
+            editor.setData(replaced_text);
+
+        } else {
+            var item;
+
+            var actualData = ContainsKeyValue(data, "id", $("#mySelect").val());
+            var previousData = ContainsKeyValue(data, "id", previous);
+
+            //1. SELECT THE INSTANCE OF THE CKEditor
+            editor = CKEDITOR.instances.editor1;
+
+            //2.1 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.1 REPLACE TEXT
+            var replaced_text = edata.replace(previousData.name,actualData.name);
+
+            //4.1 SET NEW TEXT
+            editor.setData(replaced_text);
+
+            //2.2 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.2 REPLACE TEXT
+            replaced_text = edata.replace(previousData.lastName, actualData.lastName);  
+
+            //4.2 SET NEW TEXT
+            editor.setData(replaced_text);
+
+            //2.3 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.3 REPLACE TEXT
+            replaced_text = edata.replace(previousData.id, actualData.id); 
+
+            //4.3 SET NEW TEXT
+            editor.setData(replaced_text);
+
+            //2.4 GET THE TEXT DATA
+            var edata = editor.getData();
+
+            //3.4 REPLACE TEXT
+            replaced_text = edata.replace(previousData.accountType, actualData.accountType); 
+
+            //4.4 SET NEW TEXT
+            editor.setData(replaced_text);
+
+        }
+    }
+
+
+    function ContainsKeyValue(obj, key, value) {
+        if (obj[key] === value) return true;
+        for (all in obj) {
+            if (obj[all] != null && obj[all][key] == value) {
+                return obj[all];
+            }
+        }
+        return false;
+    }
+</script>
+
