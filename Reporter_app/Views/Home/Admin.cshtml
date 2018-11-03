@@ -11,6 +11,9 @@
 <b>IDENTIFICACION</b> --identificacion--<br />
 <b>CREDITO O DEBITO</b> --tipoTarjeta--
 </textarea>
+<br />
+
+<button onclick="generatePDF()" class="btn btn-primary">Generar PDF</button>
 
 
 <script>
@@ -56,7 +59,7 @@
     
 
     CKEDITOR.replace('editor1', {
-        removeButtons: 'Cut,Copy,Paste,PasteFromWord,PasteText,HorizontalRule,SpecialChar,Blockquote,Indent,Outdent,Scayt,About,Format,IncreaseIndent,RemoveFormat,Undo,Redo,Anchor,Link,Unlink,Maximize,Source,Italic,Strike,Subscript,Superscript',
+        //removeButtons: 'Cut,Copy,Paste,PasteFromWord,PasteText,HorizontalRule,SpecialChar,Blockquote,Indent,Outdent,Scayt,About,Format,IncreaseIndent,RemoveFormat,Undo,Redo,Anchor,Link,Unlink,Maximize,Source,Italic,Strike,Subscript,Superscript',
         resize_enabled: true
     });
 
