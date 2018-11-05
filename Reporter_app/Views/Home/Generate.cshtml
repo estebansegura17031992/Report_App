@@ -4,20 +4,20 @@
 <h2>@ViewBag.Title.</h2>
 
 <h1>Datos</h1>
-<form>
-        <label for="name" >Nombre</label>
-        <input type="text" name="name" class="form-control"/>
+<form id="clientForm" action="/Home/saveClient" method="POST">
+        <label for="nameClient" >Nombre</label>
+        <input type="text" name="nameClient" class="form-control"/>
 
-        <label for="lastName">Apellido</label>
-        <input type="text" name="lastName"class="form-control" />
+        <label for="lastNameClient">Apellido</label>
+        <input type="text" name="lastNameClient"class="form-control" />
 
-        <label for="accountNumber">Numero de Cuenta</label>
-        <input type="number" name="accountNumber" class="form-control"/>
+        <label for="accountNumberClient">Numero de Cuenta</label>
+        <input type="number" name="accountNumberClient" class="form-control"/>
 
         <label>Tipo de Cuenta</label><br />
-        <input type="radio" name="accountType" value="Debito"/><label for="Debito">Debito</label>
-        <input type="radio" name="accountType" value="Credito"/><label for="Credito">Credito</label>
+        <input type="radio" name="accountTypeClient" value="1"/><label for="Debito">Debito</label>
+        <input type="radio" name="accountTypeClient" value="2"/><label for="Credito">Credito</label>
         
         <br />
-        <button onclick="generatePDF()" class="btn btn-primary">Generar PDF</button>
+        <input type="submit" class="btn btn-primary" value="Guardar Cliente"/>
 </form>
