@@ -1,6 +1,4 @@
-﻿
-
-function generatePDF() {
+﻿function generatePDF() {
     
     var doc = new jsPDF();
 
